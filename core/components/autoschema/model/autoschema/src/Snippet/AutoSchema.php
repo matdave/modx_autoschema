@@ -11,9 +11,12 @@ class AutoSchema extends Snippet
         $id = $this->getOption('id', $this->modx->resource->id);
         $this->resource = $this->modx->getObject('modResource', $id);
         
-        if( empty($this->resource) ) return;
+        if( empty($this->resource) ){
+            $this->modx->log(xPDO::LOG_LEVEL_ERROR, 'AutoSchema: No Resource Provided');
+            return; 
+        };
 
-        $tpl = $this->getOption('tpl', '@INLINE: <script type="application/ld+json">[[+data]]</script>');
+        $tpl = $this->getOption('tpl', '@INLINE <script type="application/ld+json">[[+data]]</script>');
 
         $url = $this->modx->makeUrl($this->resource->id,$this->resource->context_key,'','full');
         $data = [
@@ -66,10 +69,10 @@ class AutoSchema extends Snippet
 
         if($tpl){
             return $this->getChunk($tpl, [
-                'data' => $data,
+                'data' => $json,
             ]);
         }else{
-            return $data;
+            return $json;
         }
     }
 }
