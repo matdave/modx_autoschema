@@ -1,5 +1,3 @@
-
-  
 <?php
 /**
  * @var modX $modx
