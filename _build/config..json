@@ -1,0 +1,17 @@
+{
+    "name": "AutoSchema",
+    "lowCaseName": "autoschema",
+    "description": "Sutomatically generate JSON+LD Schema on MODX Resources",
+    "author": "matdave",
+    "version": "1.0.0-pl",
+    "package": {
+      "elements": {
+        "snippets": [
+          {
+            "name": "AutoSchema",
+            "file": "AutoSchema.php"
+          }
+        ]
+      }
+    }
+  }
