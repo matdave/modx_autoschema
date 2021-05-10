@@ -1,3 +1,8 @@
+1.0.1-pl
+--------
+Fixing Schema validation errors
+Adding properties for `image` and `logo`
+
 1.0.0-pl 
 --------
 Initial release

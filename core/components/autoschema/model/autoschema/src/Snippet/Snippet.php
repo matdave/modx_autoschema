@@ -28,7 +28,7 @@ abstract class Snippet
 
     protected function getOption($key, $default = null, $skipEmpty = false)
     {
-        return $this->modx->getOption($key, $this->sp, $default, $skipEmpty);
+        return $this->modx->getOption($key, $this->properties, $default, $skipEmpty);
     }
 
     protected function getChunk($tpl, $phs = [])

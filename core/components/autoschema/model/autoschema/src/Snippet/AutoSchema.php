@@ -37,15 +37,16 @@ class AutoSchema extends Snippet
                     '@id'=>'#Publisher',
                     '@type'=>'Organization',
                     'name'=>$this->modx->getOption('site_name'),
-                    'url'=>$this->modx->getOption('site_url')
+                    'url'=>$this->modx->getOption('site_url'),
+                    'logo'=>$this->getOption('logo', null)
             ],
             'sourceOrganization'=>['@id'=>'#Publisher'],
             'copyrightHolder'=>['@id'=>'#Publisher'],
             'mainEntityOfPage'=>[
                     '@type'=>'WebPage',
-                    '@id'=>$url,
-                    'breadcrumb'=>['@id'=>'#breadcrumb']
+                    '@id'=>$url.'#content'
             ],
+            'image'=>$this->getOption('image',null)
         ];
         
         $author = $this->modx->getObject('modUser', $this->resource->createdby);
@@ -63,7 +64,7 @@ class AutoSchema extends Snippet
                     '@type'=>'Person',
                     'name'=>$authorName,
             ];
-        }
+        }  
 
         $json = json_encode($data);
 

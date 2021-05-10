@@ -14,6 +14,8 @@ Basic usage is to just call the Snippet as `[[AutoSchema]]`.
 | type           | Article                                                          |
 | headline       | `[[*pagetitle]]`                                                 |
 | name           | `[[*pagetitle]]`                                                 | 
+| logo           | *null* (must be complete to pass validation)                     | 
+| image          | *null* (must be complete to pass validation)                     |
 | keywords       | *null*                                                           | 
 | description    | `[[*description]]`                                               |
 | articleSection | `[[*parent]]`                                                    |
