@@ -19,6 +19,11 @@ class AutoSchema extends Snippet
         $tpl = $this->getOption('tpl', '@INLINE <script type="application/ld+json">[[+data]]</script>');
 
         $url = $this->modx->makeUrl($this->resource->id,$this->resource->context_key,'','full');
+        $content = $this->resource->content;
+        $content = strip_tags($content, '<h1><h2><h3><h4><h5><h6><ol><ul><li><p><a>');
+        if(!$this->getOption('parseTags', true)){
+            $content = str_replace('[[','[[-', $content);
+        }
         $data = [
             '@context'=>$this->getOption('context','http://schema.org'),
             '@type'=>$this->getOption('type', 'Article'),
@@ -32,7 +37,7 @@ class AutoSchema extends Snippet
             'description'=>$this->getOption('description',$this->resource->get('description')),
             'copyrightYear'=>date('Y',strtotime($this->resource->get('publishedon'))),
             'articleSection'=>$this->getOption('articleSection', $this->resource->get('parent')),
-            'articleBody'=>strip_tags($this->resource->content, '<h1><h2><h3><h4><h5><h6><ol><ul><li><p><a>'),
+            'articleBody'=>$content,
             'publisher'=>[
                     '@id'=>'#Publisher',
                     '@type'=>'Organization',
@@ -50,12 +55,14 @@ class AutoSchema extends Snippet
         ];
         
         $author = $this->modx->getObject('modUser', $this->resource->createdby);
-        $profile = $author->getOne('Profile');
-        if(!empty($profile)){
-            $data['author'] = [
-                    '@type'=>'Person',
-                    'name'=>$profile->fullname,
-            ];
+        if(!empty($author)){
+            $profile = $author->getOne('Profile');
+            if(!empty($profile)){
+                $data['author'] = [
+                        '@type'=>'Person',
+                        'name'=>$profile->fullname,
+                ];
+            }
         }
         
         $authorName = $this->getOption('authorName', null);
