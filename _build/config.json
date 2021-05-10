@@ -3,7 +3,7 @@
     "lowCaseName": "autoschema",
     "description": "Sutomatically generate JSON+LD Schema on MODX Resources",
     "author": "matdave",
-    "version": "1.0.0-pl",
+    "version": "1.0.1-pl",
     "package": {
       "elements": {
         "snippets": [
