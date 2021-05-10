@@ -19,12 +19,6 @@ class AutoSchema extends Snippet
         $tpl = $this->getOption('tpl', '@INLINE <script type="application/ld+json">[[+data]]</script>');
 
         $url = $this->modx->makeUrl($this->resource->id,$this->resource->context_key,'','full');
-        $content = $this->resource->content;
-        $content = strip_tags($content, '<h1><h2><h3><h4><h5><h6><ol><ul><li><p><a>');
-        if(!$this->getOption('parseTags', true)){
-            $content = str_replace('[[','[[-', $content);
-        }
-        $content = trim(preg_replace('/\s+/', ' ', $content));
         $data = [
             '@context'=>$this->getOption('context','http://schema.org'),
             '@type'=>$this->getOption('type', 'Article'),
@@ -35,10 +29,10 @@ class AutoSchema extends Snippet
             'name'=>$this->getOption('name', $this->resource->pagetitle),
             'keywords'=>$this->getOption('keywords', null),
             'url'=>$url,
-            'description'=>$this->getOption('description',$this->resource->get('description')),
+            'description'=>$this->removeCode($this->getOption('description',$this->resource->get('description'))),
             'copyrightYear'=>date('Y',strtotime($this->resource->get('publishedon'))),
             'articleSection'=>$this->getOption('articleSection', $this->resource->get('parent')),
-            'articleBody'=>$content,
+            'articleBody'=>$this->removeCode($this->resource->content),
             'publisher'=>[
                     '@id'=>'#Publisher',
                     '@type'=>'Organization',
@@ -83,5 +77,15 @@ class AutoSchema extends Snippet
         }else{
             return $json;
         }
+    }
+
+    private function removeCode($content = null)
+    {
+        $content = strip_tags($content, '<h1><h2><h3><h4><h5><h6><ol><ul><li><p><a>');
+        if(!$this->getOption('parseTags', true)){
+            $content = str_replace('[[','[[-', $content);
+        }
+        $content = trim(preg_replace('/\s+/', ' ', $content));
+        return $content; 
     }
 }
