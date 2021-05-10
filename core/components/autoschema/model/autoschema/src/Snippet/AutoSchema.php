@@ -24,6 +24,7 @@ class AutoSchema extends Snippet
         if(!$this->getOption('parseTags', true)){
             $content = str_replace('[[','[[-', $content);
         }
+        $content = trim(preg_replace('/\s+/', ' ', $content));
         $data = [
             '@context'=>$this->getOption('context','http://schema.org'),
             '@type'=>$this->getOption('type', 'Article'),
