@@ -20,8 +20,8 @@ class AutoSchema extends Snippet
 
         $url = $this->modx->makeUrl($this->resource->id,$this->resource->context_key,'','full');
         $data = [
-            '@context'=>$this->getOption('context','http://schema.org'),
-            '@type'=>$this->getOption('type', 'Article'),
+            '@context'=>$this->getOption('context','https://schema.org'),
+            '@type'=>explode(',', $this->getOption('type', 'Article')),
             'dateCreated'=>date('c',strtotime($this->resource->get('createdon'))),
             'datePublished'=>date('c',strtotime($this->resource->get('publishedon'))),
             'dateModified'=>date('c',strtotime($this->resource->get('editedon'))),
@@ -66,7 +66,11 @@ class AutoSchema extends Snippet
                     '@type'=>'Person',
                     'name'=>$authorName,
             ];
-        }  
+        }
+        $custom = $this->getOption('custom', null);
+        if($custom){
+            $data = array_merge($data, (array)json_encode($custom));
+        }
 
         $json = json_encode($data);
 
@@ -74,12 +78,12 @@ class AutoSchema extends Snippet
             return $this->getChunk($tpl, [
                 'data' => $json,
             ]);
-        }else{
-            return $json;
         }
+
+        return $json;
     }
 
-    private function removeCode($content = null)
+    private function removeCode($content = null): string
     {
         $content = strip_tags($content, '<h1><h2><h3><h4><h5><h6><ol><ul><li><p><a>');
         if(!$this->getOption('parseTags', true)){

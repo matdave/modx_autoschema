@@ -3,13 +3,80 @@
     "lowCaseName": "autoschema",
     "description": "Sutomatically generate JSON+LD Schema on MODX Resources",
     "author": "matdave",
-    "version": "1.0.1-pl",
+    "version": "1.1.0-pl",
     "package": {
       "elements": {
         "snippets": [
           {
             "name": "AutoSchema",
-            "file": "AutoSchema.php"
+            "file": "AutoSchema.php",
+            "properties": [
+              {
+                "name": "id",
+                "type": "textfield",
+                "value": "[[*id]]"
+              },
+              {
+                "name": "tpl",
+                "type": "textfield"
+              },
+              {
+                "name": "context",
+                "type": "textfield",
+                "value": "https://schema.org"
+              },
+              {
+                "name": "type",
+                "type": "textfield",
+                "value": "Article"
+              },
+              {
+                "name": "headline",
+                "type": "textfield",
+                "value": "[[*pagetitle]]"
+              },
+              {
+                "name": "name",
+                "type": "textfield",
+                "value": "[[*pagetitle]]"
+              },
+              {
+                "name": "logo",
+                "type": "textfield"
+              },
+              {
+                "name": "image",
+                "type": "textfield"
+              },
+              {
+                "name": "keywords",
+                "type": "textfield"
+              },
+              {
+                "name": "description",
+                "type": "textfield",
+                "value": "[[*description]]"
+              },
+              {
+                "name": "articleSection",
+                "type": "textfield",
+                "value": "[[*parent]]"
+              },
+              {
+                "name": "authorName",
+                "type": "textfield"
+              },
+              {
+                "name": "parseTags",
+                "type": "modx-combo-boolean",
+                "value": "1"
+              },
+              {
+                "name": "custom",
+                "type": "textfield",
+                "value": "{}"
+              }
+            ]
           }
         ]
       }
