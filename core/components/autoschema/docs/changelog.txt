@@ -1,3 +1,8 @@
+1.1.1-pl
+--------
+- Fix default property values
+- Fix error handling in MODX 3
+
 1.1.0-pl
 --------
 - Add multiple @types with a comma separated string

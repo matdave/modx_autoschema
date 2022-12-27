@@ -12,7 +12,7 @@ class AutoSchema extends Snippet
         $this->resource = $this->modx->getObject('modResource', $id);
         
         if( empty($this->resource) ){
-            $this->modx->log(xPDO::LOG_LEVEL_ERROR, 'AutoSchema: No Resource Provided');
+            $this->modx->log(\xPDO::LOG_LEVEL_ERROR, 'AutoSchema: No Resource Provided');
             return; 
         };
 

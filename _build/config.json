@@ -3,7 +3,7 @@
     "lowCaseName": "autoschema",
     "description": "Sutomatically generate JSON+LD Schema on MODX Resources",
     "author": "matdave",
-    "version": "1.1.0-pl",
+    "version": "1.1.1-pl",
     "package": {
       "elements": {
         "snippets": [
@@ -13,8 +13,7 @@
             "properties": [
               {
                 "name": "id",
-                "type": "textfield",
-                "value": "[[*id]]"
+                "type": "textfield"
               },
               {
                 "name": "tpl",
@@ -32,13 +31,11 @@
               },
               {
                 "name": "headline",
-                "type": "textfield",
-                "value": "[[*pagetitle]]"
+                "type": "textfield"
               },
               {
                 "name": "name",
-                "type": "textfield",
-                "value": "[[*pagetitle]]"
+                "type": "textfield"
               },
               {
                 "name": "logo",
@@ -54,13 +51,11 @@
               },
               {
                 "name": "description",
-                "type": "textfield",
-                "value": "[[*description]]"
+                "type": "textfield"
               },
               {
                 "name": "articleSection",
-                "type": "textfield",
-                "value": "[[*parent]]"
+                "type": "textfield"
               },
               {
                 "name": "authorName",
