@@ -1,3 +1,9 @@
+1.1.0-pl
+--------
+- Add multiple @types with a comma separated string
+- Add custom objects via the custom command
+- Update schema to https
+
 1.0.1-pl
 --------
 Fixing Schema validation errors
