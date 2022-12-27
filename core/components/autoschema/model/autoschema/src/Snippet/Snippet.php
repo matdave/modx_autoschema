@@ -26,7 +26,7 @@ abstract class Snippet
 
     abstract public function process();
 
-    protected function getOption($key, $default = null, $skipEmpty = false)
+    protected function getOption($key, $default = null, $skipEmpty = true)
     {
         return $this->modx->getOption($key, $this->properties, $default, $skipEmpty);
     }
@@ -37,7 +37,7 @@ abstract class Snippet
             $content = str_replace('@INLINE ', '', $tpl);
 
             /** @var \modChunk $chunk */
-            $chunk = $this->modx->newObject('modChunk', array('name' => 'inline-' . uniqid()));
+            $chunk = $this->modx->newObject('modChunk', array('name' => 'inline-' . uniqid('', true)));
             $chunk->setCacheable(false);
 
             return $chunk->process($phs, $content);

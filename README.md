@@ -21,4 +21,4 @@ Basic usage is to just call the Snippet as `[[AutoSchema]]`.
 | articleSection | `[[*parent]]`                                                   |
 | authorName     | gets the fullname property from the createdby user              |
 | parseTags      | *true* (disable to prevent parsing modx tags in content)        |
-| custom         | {} (json object to merge in to the schema)                      |
+| custom         | [] (json object to merge in to the schema)                      |

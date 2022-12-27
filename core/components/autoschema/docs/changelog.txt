@@ -1,3 +1,7 @@
+1.1.2-pl
+--------
+- Swap skipEmpty flag to true to better handle default properties
+
 1.1.1-pl
 --------
 - Fix default property values
