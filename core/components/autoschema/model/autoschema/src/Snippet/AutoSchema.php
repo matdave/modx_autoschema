@@ -69,7 +69,7 @@ class AutoSchema extends Snippet
         }
         $custom = $this->getOption('custom', null);
         if($custom){
-            $data = array_merge($data, (array)json_encode($custom));
+            $data = array_merge($data, (array)json_decode($custom, false));
         }
 
         $json = json_encode($data);
