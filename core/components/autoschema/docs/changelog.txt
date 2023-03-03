@@ -1,3 +1,7 @@
+1.1.3-pl
+--------
+- Adjust the content parser to better handle MODX tags
+
 1.1.2-pl
 --------
 - Swap skipEmpty flag to true to better handle default properties

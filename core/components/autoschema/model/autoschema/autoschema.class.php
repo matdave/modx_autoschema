@@ -2,7 +2,6 @@
 
 class AutoSchema
 {
-    
     /**
      * @var modX|null $modx
      */

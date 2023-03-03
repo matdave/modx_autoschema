@@ -14,7 +14,7 @@ abstract class Snippet
     protected $properties = [];
 
     /** @var bool */
-    protected $debug = false; 
+    protected $debug = false;
 
     public function __construct(\AutoSchema &$autoschema, array $properties = [])
     {
@@ -44,5 +44,5 @@ abstract class Snippet
         }
 
         return $this->modx->getChunk($tpl, $phs);
-    } 
+    }
 }
